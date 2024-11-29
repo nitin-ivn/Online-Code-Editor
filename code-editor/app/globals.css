@@ -4,7 +4,7 @@
 
 :root {
   --background: #212836;
-  --foreground: #171717;
+  --foreground: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,13 +17,65 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
 }
 
 .sidebar{
   display: flex;
+  position: fixed;
   flex-direction: column;
-  max-width: 5rem;
+  align-items: center;
+  min-width: 4rem;
   height: 100vh;
   background-color: #34363b;
+  border-right: 2px solid #373d49;
+}
+
+.topbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #34363b;
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+}
+
+.run-btn{
+  margin-right: 1vw;
+  background-color: #0069ef;
+  color: white;
+  height: 2rem;
+  width: 5.5rem;  
+}
+
+.header{
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  padding-inline: 1vw;
+  vertical-align: auto;
+  background-color: #212836;
+  font-size: 1vw;
+}
+
+.clear-btn{
+  background-color: transparent;
+  border: 1px solid rgb(221,221,221);
+  width: 4.5rem;
+  height: 2rem;
+  border-radius: 3px;
+}
+
+.lang{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #515458;
+  width: 70%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
 }

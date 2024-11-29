@@ -64,7 +64,7 @@ const DynamicCodeEditor: React.FC<DynamicCodeEditorProps> = ({ language, initial
     return () => view.destroy();
   }, [language, initialCode, onChange]);
 
-  return <div ref={editorRef} style={{ border: "1px solid #ddd", height: "100%" }} />;
+  return <div ref={editorRef} className="editor"/>;
 };
 
 export default DynamicCodeEditor;
