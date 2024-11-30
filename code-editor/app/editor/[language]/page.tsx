@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import DynamicCodeEditor from "@/app/Components/DynamicLanguage";
+import { useTheme } from "@/context/ThemeContext";
 
 const runCode = async (language: string, code: string) => {
   if (language === "javascript") {
@@ -23,24 +24,15 @@ const LanguageEditor = () => {
   const language = pathname?.split("/").pop();
 
   const [code, setCode] = useState("// Start coding here...");
-  const [output, setOutput] = useState<string>("# Output is displayed here");
-  const [themeToggle,setThemeToggle] = useState<boolean>(false)
-  const [theme, setTheme] = useState<string>("/icons/sun.svg");
+  const [output, setOutput] = useState<string>("");
+
+  const {theme, toggleTheme} = useTheme();
 
   useEffect(() => {
     if (!language || !validLanguages.includes(language)) {
       router.push("/editor/javascript");
     }
   }, [language, router]);
-
-  const handleTheme = () => {
-    setThemeToggle((prev) => !prev);
-    if(themeToggle){
-      setTheme("/icons/moon.svg");
-    }else{
-      setTheme('/icons/sun.svg');
-    }
-  }
 
   const handleClear = () => {
     setOutput("");
@@ -64,8 +56,8 @@ const LanguageEditor = () => {
             </div>
             <div className="flex flex-row">
               <button className="theme-btn me-4 px-3"
-              onClick={handleTheme}>
-                <img src={theme} alt="" />
+              onClick={toggleTheme}>
+                <img src={theme === 'dark' ? "/icons/sun.svg": "/icons/moon.svg"} alt="" />
               </button>
 
               <button
@@ -90,8 +82,7 @@ const LanguageEditor = () => {
                 Clear
             </button>
         </div>
-        <p style={{color: "rgb(170,170,170)"}}>#Output will be displayed here</p>
-        <pre style={{ background: "#212836", padding: "10px", borderRadius: "5px" }}>{output}</pre>
+        <pre className="ouput-con">{output}</pre>
       </div>
     </div>
   );

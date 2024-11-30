@@ -18,6 +18,13 @@ interface DynamicCodeEditorProps {
 
 const DynamicCodeEditor: React.FC<DynamicCodeEditorProps> = ({ language, initialCode, onChange }) => {
   const editorRef = useRef<HTMLDivElement>(null);
+  const editorViewRef = useRef<EditorView | null>(null);
+
+  const focusEditor = () => {
+    if (editorViewRef.current) {
+      editorViewRef.current.focus();
+    }
+  };
 
   useEffect(() => {
     if (!editorRef.current) return;
@@ -60,6 +67,10 @@ const DynamicCodeEditor: React.FC<DynamicCodeEditorProps> = ({ language, initial
       state,
       parent: editorRef.current,
     });
+
+    editorViewRef.current = view;
+    
+    focusEditor();
 
     return () => view.destroy();
   }, [language, initialCode, onChange]);

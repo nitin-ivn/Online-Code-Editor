@@ -5,13 +5,24 @@
 :root {
   --background: #212836;
   --foreground: #ededed;
+  --header: #34363b;
+  --border: #515458;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #212836;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  --background: #212836;
+  --foreground: #ededed;
+  --header: #34364b;
+  --border: #515458;
+  --line: #212836;
+}
+
+[data-theme="light"] {
+  --background: #f5f5f5;
+  --foreground: #000000;
+  --header: #fbfbfb;
+  --border: #e5e8ed;
+  --line: #f0f0f0;
 }
 
 body {
@@ -27,8 +38,8 @@ body {
   align-items: center;
   min-width: 4rem;
   height: 100vh;
-  background-color: #34363b;
-  border-right: 2px solid #373d49;
+  background-color: var(--header);
+  border-right: 2px solid var(--border);
 }
 
 .topbar{
@@ -36,7 +47,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #34363b;
+  background-color: var(--header);
   min-height: 3.5rem;
   max-height: 3.5rem;
 }
@@ -61,7 +72,7 @@ body {
   align-items: center;
   padding-inline: 1vw;
   vertical-align: auto;
-  background-color: #212836;
+  background-color: var(--background);
   font-size: 1rem;
 }
 
@@ -77,7 +88,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #515458;
+  border: 2px solid var(--border);
   width: 70%;
   height: 3rem;
   margin-bottom: 1rem;
@@ -89,10 +100,19 @@ body {
   background-color: #0069ef;
 }
 
+.editor{
+  background-color: var(--background) !important;
+}
+
 .inp-con{
-  margin-left: 4.2rem;
+  margin-left: 4rem;
   display: flex;
   height: 100vh;
+}
+
+.output-con{
+   padding: "10px";
+   border-radius: "5px";
 }
 
 .theme-btn{
@@ -101,7 +121,7 @@ body {
   justify-content: center;
   height: 2rem;
   width: 3.5rem;
-  border: 2px solid #515458;
+  border: 2px solid var(--border);
 }
 
 
@@ -110,4 +130,18 @@ body {
     display: flex;
     flex-direction: column;
   }
+}
+
+
+.cm-editor {
+  background-color: var(--background) !important;
+}
+
+.cm-gutter {
+  background-color: var(--background) !important
+}
+
+.ͼ2 .cm-gutters {
+  border: none;
+  background-color: var(--line);
 }

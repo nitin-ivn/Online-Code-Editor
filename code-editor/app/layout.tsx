@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/context/ThemeContext";
 import localFont from "next/font/local";
 import "./globals.css";
 import Sidebar from "./Sidebar";
@@ -11,8 +12,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Sidebar />
-        {children}
+        <ThemeProvider>
+          <Sidebar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
