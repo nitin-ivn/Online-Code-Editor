@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { oneDark } from "@codemirror/theme-one-dark";
-import { EditorState } from "@codemirror/state";
+import { ChangeSet, EditorState } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
@@ -37,14 +37,14 @@ const DynamicCodeEditor: React.FC<DynamicCodeEditorProps> = ({ language, initial
         case "rust":
           return rust();
         case "swift":
-          console.warn("Swift is not natively supported in CodeMirror. Using JavaScript syntax highlighting as a fallback.");
+          alert("Swift is not natively supported in CodeMirror. Using JavaScript syntax highlighting as a fallback.");
           return javascript();
         default:
           return python();
       }
     })();
 
-    const updateListener = EditorView.updateListener.of((update: { changes: any; state: { doc: any; }; }) => {
+    const updateListener = EditorView.updateListener.of((update: { changes: ChangeSet; state: EditorState }) => {
       if (update.changes && onChange) {
         const doc = update.state.doc;
         onChange(doc.toString());
