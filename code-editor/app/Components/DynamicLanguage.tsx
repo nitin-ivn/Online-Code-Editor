@@ -62,6 +62,7 @@ const DynamicCodeEditor: React.FC<DynamicCodeEditorProps> = ({ language, initial
       doc: initialCode,
       extensions: [lineNumbers(), languageExtension, updateListener,keymap.of(defaultKeymap),oneDark],
     });
+    
 
     const view = new EditorView({
       state,

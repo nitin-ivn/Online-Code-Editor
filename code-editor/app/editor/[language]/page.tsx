@@ -8,13 +8,22 @@ import { useTheme } from "@/context/ThemeContext";
 const runCode = async (language: string, code: string) => {
   if (language === "javascript") {
     try {
-      return eval(code); // Be cautious with eval!
+      let result = '';
+      const originalLog = console.log;
+      console.log = (message: any) => {
+        result += message + '\n';
+      };
+      eval(code);
+      console.log = originalLog;
+
+      return result || "Code executed without output.";
     } catch (error: any) {
       return `Error: ${error.message}`;
     }
   }
   return `Execution for ${language} is not supported in the browser.`;
 };
+
 
 const validLanguages = ["python", "javascript", "go", "php", "rust", "c"];
 
