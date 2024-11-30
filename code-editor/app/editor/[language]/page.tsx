@@ -10,15 +10,18 @@ const runCode = async (language: string, code: string) => {
     try {
       let result = '';
       const originalLog = console.log;
-      console.log = (message: any) => {
+      console.log = (message: string) => {
         result += message + '\n';
       };
       eval(code);
       console.log = originalLog;
 
       return result || "Code executed without output.";
-    } catch (error: any) {
-      return `Error: ${error.message}`;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return `Error: ${error.message}`;
+      }
+      return "Unknown error occurred";
     }
   }
   return `Execution for ${language} is not supported in the browser.`;
