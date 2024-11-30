@@ -11,7 +11,7 @@ import {rust} from "@codemirror/lang-rust"
 import { defaultKeymap } from "@codemirror/commands";
 
 interface DynamicCodeEditorProps {
-  language: "javascript" | "python" | "go" | "swift" | "c" | "php" | "rust";
+  language: "javascript" | "python" | "go" | "swift" | "c" | "php" | "rust" | "swift";
   initialCode: string;
   onChange?: (value: string) => void;
 }

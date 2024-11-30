@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import DynamicCodeEditor from "@/app/Components/DynamicLanguage";
 import { useTheme } from "@/context/ThemeContext";
 
-type Language = "javascript" | "python" | "go" | "swift" | "c" | "php" | "rust";
+type Language = "javascript" | "python" | "go" | "swift" | "c" | "php" | "rust" | "swift";
 
 const runCode = async (language: string, code: string) => {
   if (language === "javascript") {
@@ -26,11 +26,14 @@ const runCode = async (language: string, code: string) => {
       return "Unknown error occurred";
     }
   }
+  if(language === "swift"){
+    return "Swift is not natively supported in CodeMirror. Using JavaScript syntax highlighting as a fallback."
+  }
   return `Execution for ${language} is not supported in the browser.`;
 };
 
 
-const validLanguages = ["python", "javascript", "go", "php", "rust", "c"];
+const validLanguages = ["python", "javascript", "go", "php", "rust", "c", "swift"];
 
 const LanguageEditor = () => {
   const pathname = usePathname();
