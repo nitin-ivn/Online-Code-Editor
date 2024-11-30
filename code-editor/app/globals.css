@@ -12,7 +12,7 @@
 [data-theme="dark"] {
   --background: #212836;
   --foreground: #ededed;
-  --header: #34364b;
+  --header: rgba(52,54,59,255);
   --border: #515458;
   --line: #212836;
 }
