@@ -24,6 +24,8 @@ const LanguageEditor = () => {
 
   const [code, setCode] = useState("// Start coding here...");
   const [output, setOutput] = useState<string>("# Output is displayed here");
+  const [themeToggle,setThemeToggle] = useState<boolean>(false)
+  const [theme, setTheme] = useState<string>("/icons/sun.svg");
 
   useEffect(() => {
     if (!language || !validLanguages.includes(language)) {
@@ -31,8 +33,17 @@ const LanguageEditor = () => {
     }
   }, [language, router]);
 
-  const handleCode = (code: string) => {
-    setCode(code)
+  const handleTheme = () => {
+    setThemeToggle((prev) => !prev);
+    if(themeToggle){
+      setTheme("/icons/moon.svg");
+    }else{
+      setTheme('/icons/sun.svg');
+    }
+  }
+
+  const handleClear = () => {
+    setOutput("");
   }
 
   const handleRun = async () => {
@@ -45,18 +56,25 @@ const LanguageEditor = () => {
   }
 
   return (
-    <div style={{marginLeft: "4.2rem",  display: "flex", height: "100vh" }}>
+    <div className="inp-con">
       <div style={{ flex: 1}}>
         <div className="w-50vw topbar">
             <div className="header">
                 <h2>{`${language.charAt(0).toUpperCase() + language.slice(1)}`}</h2>
             </div>
-            <button
-            onClick={handleRun}
-            className="run-btn"
-            >
-                Run
-            </button>
+            <div className="flex flex-row">
+              <button className="theme-btn me-4 px-3"
+              onClick={handleTheme}>
+                <img src={theme} alt="" />
+              </button>
+
+              <button
+              onClick={handleRun}
+              className="run-btn"
+              >
+                  Run
+              </button>
+            </div>
         </div>
         <DynamicCodeEditor language={language as any} initialCode={code} onChange={setCode} />
       </div>
@@ -66,11 +84,13 @@ const LanguageEditor = () => {
                 <h2>Output</h2>
             </div>
             <button
+            onClick={handleClear}
             className="clear-btn me-3"
             >
                 Clear
             </button>
         </div>
+        <p style={{color: "rgb(170,170,170)"}}>#Output will be displayed here</p>
         <pre style={{ background: "#212836", padding: "10px", borderRadius: "5px" }}>{output}</pre>
       </div>
     </div>

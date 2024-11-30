@@ -46,7 +46,12 @@ body {
   background-color: #0069ef;
   color: white;
   height: 2rem;
-  width: 5.5rem;  
+  width: 4.5rem;
+  transition: all 0.5s;  
+}
+
+.run-btn:hover{
+  background-color: #0047d1;
 }
 
 .header{
@@ -57,7 +62,7 @@ body {
   padding-inline: 1vw;
   vertical-align: auto;
   background-color: #212836;
-  font-size: 1vw;
+  font-size: 1rem;
 }
 
 .clear-btn{
@@ -78,4 +83,31 @@ body {
   margin-bottom: 1rem;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.lang-active{
+  background-color: #0069ef;
+}
+
+.inp-con{
+  margin-left: 4.2rem;
+  display: flex;
+  height: 100vh;
+}
+
+.theme-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 3.5rem;
+  border: 2px solid #515458;
+}
+
+
+@media only screen and (max-width: 580px) {
+  .inp-con{
+    display: flex;
+    flex-direction: column;
+  }
 }
