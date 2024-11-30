@@ -5,6 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import DynamicCodeEditor from "@/app/Components/DynamicLanguage";
 import { useTheme } from "@/context/ThemeContext";
 
+type Language = "javascript" | "python" | "go" | "swift" | "c" | "php" | "rust";
+
 const runCode = async (language: string, code: string) => {
   if (language === "javascript") {
     try {
@@ -80,7 +82,7 @@ const LanguageEditor = () => {
               </button>
             </div>
         </div>
-        <DynamicCodeEditor language={language as any} initialCode={code} onChange={setCode} />
+        <DynamicCodeEditor language={language as Language} initialCode={code} onChange={setCode} />
       </div>
       <div className="output">
       <div className="w-50vw topbar">
