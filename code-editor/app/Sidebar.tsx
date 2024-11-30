@@ -41,7 +41,7 @@ const Sidebar = () => {
       ))}
 
       <Link href='/editor/go' className={`lang mt-3 ${isActive('go') ? 'lang-active' : ''}`}>
-          <img src={theme === "dark" ?  '/icons/go.webp': "/icons/lightmode/godark.webp"} alt='Go Icon' />
+          <img src={theme === "dark" ?  '/icons/go.webp': "/icons/lightmode/Godark.webp"} alt='Go' />
       </Link>
     </div>
   );
