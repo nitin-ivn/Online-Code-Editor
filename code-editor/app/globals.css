@@ -115,6 +115,14 @@ body {
   border-left: 1px solid var(--border);
 }
 
+.page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .output-con{
    padding: 10px;
    border-radius: 5px;
