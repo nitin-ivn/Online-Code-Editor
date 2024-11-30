@@ -110,9 +110,14 @@ body {
   height: 100vh;
 }
 
+.output{
+  flex: 1;
+  border-left: 1px solid var(--border);
+}
+
 .output-con{
-   padding: "10px";
-   border-radius: "5px";
+   padding: 10px;
+   border-radius: 5px;
 }
 
 .theme-btn{

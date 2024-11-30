@@ -79,7 +79,7 @@ const LanguageEditor = () => {
         </div>
         <DynamicCodeEditor language={language as any} initialCode={code} onChange={setCode} />
       </div>
-      <div style={{ flex: 1,borderLeft: "1px solid #373d49" }}>
+      <div className="output">
       <div className="w-50vw topbar">
             <div className="ms-2">
                 <h2>Output</h2>

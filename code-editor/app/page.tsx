@@ -7,6 +7,8 @@ export default function Home() {
     redirect('/editor/javascript')
   })
   return (
-    <>Loading...</>
+    <>
+    <h1 className="ms-6">Loading...</h1>
+    </>
   );
 }
